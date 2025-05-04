@@ -1,7 +1,14 @@
+using Azure.Communication.Sms;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+/****************************************************************************************************/
+string smsConnection = builder.Configuration.GetConnectionString("ACSConnectionString");
+builder.Services.AddSingleton(new SmsClient(smsConnection));
+/****************************************************************************************************/
+
 
 var app = builder.Build();
 

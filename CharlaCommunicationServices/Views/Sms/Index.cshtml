@@ -1,0 +1,31 @@
+﻿@{
+    ViewData["Title"] = "Enviar SMS";
+}
+
+<div class="container mt-5">
+    <div class="card shadow-lg">
+        <div class="card-header bg-primary text-white">
+            <h4 class="mb-0">Enviar SMS con Azure Communication Services</h4>
+        </div>
+        <div class="card-body">
+            <form method="post" asp-controller="Sms" asp-action="EnviarSms">
+                <div class="mb-3">
+                    <label for="telefonoDestino" class="form-label">Teléfono destino</label>
+                    <input type="text" class="form-control" name="telefonoDestino" placeholder="+34600111222" required>
+                </div>
+                <div class="mb-3">
+                    <label for="mensaje" class="form-label">Mensaje</label>
+                    <textarea class="form-control" name="mensaje" rows="4" placeholder="Escribe tu mensaje..." required></textarea>
+                </div>
+                <button type="submit" class="btn btn-success">Enviar SMS</button>
+            </form>
+
+            @if (ViewBag.Resultado != null)
+            {
+                <div class="alert alert-info mt-4">
+                    <strong>Resultado:</strong> @ViewBag.Resultado
+                </div>
+            }
+        </div>
+    </div>
+</div>
